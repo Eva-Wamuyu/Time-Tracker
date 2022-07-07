@@ -10,6 +10,7 @@ from rest_framework.permissions import SAFE_METHODS, AllowAny,IsAuthenticated
 # Create your views here.
 
 class ReviewsView(APIView):
+    permission_classes = (IsAuthenticated,)
    
 
     def get(self,request,format=None):
@@ -35,7 +36,7 @@ class ReviewsView(APIView):
 
 
 class GetUsersView(APIView):
-        #permission_classes = [IsAuthenticated]
+        permission_classes = [IsAuthenticated]
         
         def get(self,request,format=None):
             reviews = User.objects.all()
@@ -70,7 +71,7 @@ class GetUsersView(APIView):
 
 class ProjectsView(APIView):
 
-    #permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
     def get(self,request,userId,format=None):
         projects = Project.objects.all().filter(user=userId)
         serializer = ProjectSerializer(projects,many=True)
@@ -91,6 +92,7 @@ class ProjectsView(APIView):
 
 
 class ProjectDescription(APIView):
+      permission_classes = (IsAuthenticated,)
       def get(self,request,projectId,format=None):
         try:
             project = Project.objects.get(pk=projectId)
@@ -125,6 +127,7 @@ class ProjectDescription(APIView):
 
 
 class UserDescription(APIView):
+    permission_classes = (IsAuthenticated,)
 
     # def get_user(self,userId):
     #        try:

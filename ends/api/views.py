@@ -23,8 +23,8 @@ class MyTokenObtainPairView(TokenObtainPairView):
 @api_view(['GET'])
 def getRoutes(request):
     routes = [
-        '/api/token',
-        '/api/token/refresh',
+        '/api/token/',
+        '/api/token/refresh/',
     ]
 
     return Response(routes)
