@@ -146,7 +146,7 @@ WSGI_APPLICATION = 'timetracker.wsgi.application'
 #     }
 # }
 if config('MODE') == 'development':
-    DEBUG = True
+    DEBUG = config('DEBUG')
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -155,7 +155,7 @@ if config('MODE') == 'development':
         }
     }
 else:
-    DEBUG = False
+    DEBUG = config('DEBUG')
     DATABASES = {
         'default': dj_database_url.config(default=config('DATABASE_URL')
             
