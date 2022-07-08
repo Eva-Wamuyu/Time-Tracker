@@ -9,11 +9,10 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-from decouple import config
+from decouple import config,Csv
 import os
 from pathlib import Path
 from datetime import timedelta
-from sys import api_version
 import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -30,8 +29,8 @@ SECRET_KEY = 'django-insecure-i9c#&(-h=t#q#%oxjz^i=-nu@edsutrh1jnw1u-gf%z^oxva1f
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
 
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 # Application definition
 
