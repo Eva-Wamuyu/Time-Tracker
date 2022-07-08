@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import Project, Reviews
 from .models import Userr as User
-from .serialisers import ProjectSerializer, ReviewSerializer, UserSerializer
+from .serialisers import ProjectSerializer, ReviewSerializer, UserSerializer,AddUserSerializer
 from rest_framework.permissions import SAFE_METHODS, AllowAny,IsAuthenticated
 
 # Create your views here.
@@ -46,13 +46,7 @@ class GetUsersView(APIView):
 
 
        
-        def post(self,request,format=None):
-            serializer = UserSerializer(data=request.data)
-            if serializer.is_valid():
-                serializer.save()
-                return Response({"status":"Ok","data":serializer.data},status.HTTP_200_OK)
-            else:
-                return Response({"status":False,"data":serializer.errors},status.HTTP_400_BAD_REQUEST)
+        
 
         
         def delete(self, request, format=None):
@@ -160,6 +154,15 @@ class UserDescription(APIView):
         
     
 
+class CreateUserView(APIView):
+
+    def post(self,request,format=None):
+            serializer = AddUserSerializer(data=request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response({"status":"Ok","data":serializer.data},status.HTTP_200_OK)
+            else:
+                return Response({"status":False,"data":serializer.errors},status.HTTP_400_BAD_REQUEST)
 
 
 

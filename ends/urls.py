@@ -6,7 +6,8 @@ urlpatterns = [
     path('users/', views.GetUsersView.as_view()),
     path('<userId>/projects/', views.ProjectsView.as_view()),
     path('projects/project/<projectId>/details/', views.ProjectDescription.as_view()),
-     path('users/user/<userId>/details/', views.UserDescription.as_view()),
+    path('users/user/<userId>/details/', views.UserDescription.as_view()),
+    path('user/signup', views.CreateUserView.as_view()),
     
 
 ]

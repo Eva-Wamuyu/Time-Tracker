@@ -8,7 +8,7 @@ from .models import Reviews,Project,Userr
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = Userr
-        #exclude = ['image']
+        
         fields = ['name', 'email', 'password', 'profession','image']
 
 
@@ -26,4 +26,8 @@ class ReviewSerializer(serializers.ModelSerializer):
         fields = '__all__'
         
 
-
+class AddUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Userr
+        
+        fields = ['name', 'email', 'password']
