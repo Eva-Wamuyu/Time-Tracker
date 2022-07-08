@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-i9c#&(-h=t#q#%oxjz^i=-nu@edsutrh1jnw1u-gf%z^oxva1f
 DEBUG = True
 
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -154,6 +154,7 @@ if config('MODE') == 'development':
         }
     }
 else:
+    ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
     DEBUG = config('DEBUG')
     DATABASES = {
         'default': dj_database_url.config(default=config('DATABASE_URL')
